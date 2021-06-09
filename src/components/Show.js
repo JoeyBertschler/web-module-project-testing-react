@@ -5,8 +5,10 @@ import Loading from './Loading';
 const Show = (props) => {
     const { handleSelect, selectedSeason, show } = props;
     
+    // console.log(show)
+
     if (!show)
-      return <Loading />
+      return <Loading/>
 
     return(<div data-testid="show-container">
         <h1>{show.name}</h1>
@@ -17,13 +19,15 @@ const Show = (props) => {
           <option value="none"></option>
           {
             show.seasons.map(season=>{
-              return(<option data-testid="season-option" key={season.id} value={season.id}>{season.name}</option>);
+              return(<option data-testid="season-option" 
+              key={season.id} value={season.id}>{season.name}</option>);
             })
           }
         </select>
 
         {
-            (selectedSeason !== "none") && <Episodes episodes={show.seasons[selectedSeason].episodes} />
+            (selectedSeason !== "none") && 
+            <Episodes episodes={show.seasons[selectedSeason].episodes} />
         }
     </div>);
 }
